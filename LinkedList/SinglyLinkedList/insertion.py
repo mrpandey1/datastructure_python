@@ -34,11 +34,26 @@ class LinkedList:
         new_node=Node(data)
         new_node.next=temp.next
         temp.next=new_node
+    def InsertBefore(self,key,data):
+        temp=self.head
+        new_node=Node(data)
+        if temp.data==key:
+            new_node.next=self.head
+            self.head=new_node
+            return 
+        while temp.next and temp.data!=key:
+            prev=temp 
+            temp=temp.next
+        if temp.data!=key:
+            print("Notound")
+            return 
+        new_node.next=temp
+        prev.next=new_node
+        
 llist = LinkedList()
 llist.InsertAtEnd(6)
-llist.printList()
 for i in range(4):
     llist.InsertAtStart(i)
-llist.printList()
-llist.InsertAfter(0,5)
+llist.InsertAfter(6,5)
+llist.InsertBefore(6,433)
 llist.printList()
