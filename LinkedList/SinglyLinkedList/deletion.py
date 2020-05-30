@@ -33,6 +33,13 @@ class LinkedList:
             print(temp.data,end=' ')
             temp=temp.next
         print()
+    def deleteAll(self):
+        temp=self.head
+        while temp:
+            self.head=temp.next
+            temp=None
+            temp=self.head
+        self.printList()
 llist = LinkedList()  
 llist.push(7)  
 llist.push(1)  
@@ -46,3 +53,6 @@ llist.deleteFirst()
 llist.printList()
 llist.deleteLast()
 llist.printList()
+for i in range(4):
+    llist.push(i)
+llist.deleteAll()
