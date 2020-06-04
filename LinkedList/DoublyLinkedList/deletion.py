@@ -29,6 +29,19 @@ class DoublyLinkedList:
             pre=temp
             temp=temp.next
         pre.next=None
+    def deleteelement(self,target):
+        temp=self.head
+        if self.head is None:
+            print("Deletion from empty Linked list is not possible")
+            return
+        while temp.next and temp.data != target:
+            pre=temp
+            temp=temp.next
+        if temp.data!=target or temp.next is None:
+            print("Not Found")
+            return
+        pre.next=temp.next
+        pre.next.prev=pre
     def printList(self):
         temp=self.head
         while temp:
@@ -43,5 +56,6 @@ llist.addatstart(4)
 llist.addatstart(5)
 llist.printList()
 llist.deletestart()
+llist.deleteelement(14)
 llist.deleteend()
 llist.printList()
