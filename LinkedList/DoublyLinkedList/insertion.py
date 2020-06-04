@@ -38,6 +38,23 @@ class DoublyLinkedList:
         else:
             print(f'{target} not found')
             return
+    def insertBefore(self,target,data):
+        new_node=Node(data)
+        temp=self.head
+        if self.head is None:
+            print(f'{target} not found')
+            return
+        while temp.next and temp.data!=target:
+            pre=temp
+            temp=temp.next
+        if temp.data==target:
+            new_node.next=temp
+            temp.prev=new_node
+            pre.next=new_node
+            new_node.prev=pre
+        else:
+            print(f'{target} not found')
+            return
     def printList(self):
         temp=self.head
         while temp:
@@ -55,5 +72,6 @@ llist.addatend(4)
 llist.addatend(3)
 llist.addatend(2)
 llist.addatend(1)
-llist.insertAfter(32,34)
+llist.insertAfter(3,32)
+llist.insertBefore(32,34)
 llist.printList()
