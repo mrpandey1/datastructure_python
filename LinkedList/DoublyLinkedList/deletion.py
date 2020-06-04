@@ -15,8 +15,20 @@ class DoublyLinkedList:
         self.head=new
     def deletestart(self):
         temp=self.head
+        if self.head is None:
+            print("Deletion from empty Linked list is not possible")
+            return
         self.head=self.head.next
         self.head.prev=None
+    def deleteend(self):
+        temp=self.head
+        if self.head is None:
+            print("Deletion from empty Linked list is not possible")
+            return
+        while temp.next is not None:
+            pre=temp
+            temp=temp.next
+        pre.next=None
     def printList(self):
         temp=self.head
         while temp:
@@ -30,5 +42,6 @@ llist.addatstart(3)
 llist.addatstart(4)
 llist.addatstart(5)
 llist.printList()
-llist.deletestart(
+llist.deletestart()
+llist.deleteend()
 llist.printList()
