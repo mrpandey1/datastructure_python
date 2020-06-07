@@ -1,22 +1,27 @@
 import timeit
-def quicksort(a,l,h):
-    if l<h:
-        pivot=l
-        i=l
-        j=h
-        while i<j:
-            while a[i]<=a[pivot] and i<h:
-                i+=1
-            while a[j]>a[pivot]:
-                j-=1
-            if i<j:
-                a[i],a[j]=a[j],a[i]
-        a[pivot],a[j]=a[j],a[pivot]
-        quicksort(a,l,j-1)
-        quicksort(a,j+1,h)
-a=[4,5,2,1,4,1]
+def partition(a,l,h):
+    pivot=a[l]
+    i=l
+    j=h
+    while i<j:
+        while a[i]<=pivot and i<h:
+            i+=1
+        while a[j]>pivot and j>l:
+            j-=1
+        if i<j:
+            a[i],a[j]=a[j],a[i]
+    a[l],a[j]=a[j],a[l]
+    return j
+def quicksort(a,i,j):
+    if i<j:
+        k=partition(a,i,j)
+        quicksort(a,i,k)
+        quicksort(a,k+1,j)
+a=[6,5,8,9,3,10,15,12,16]
 starttime = timeit.default_timer()
 print("The start time is :",starttime)
 quicksort(a,0,len(a)-1)
 print("The time difference is :", timeit.default_timer() - starttime)
 print(a)
+
+
