@@ -15,7 +15,7 @@ def partition(a,l,h):
 def quicksort(a,i,j):
     if i<j:
         k=partition(a,i,j)
-        quicksort(a,i,k)
+        quicksort(a,i,k-1)
         quicksort(a,k+1,j)
 a=[6,5,8,9,3,10,15,12,16]
 starttime = timeit.default_timer()
